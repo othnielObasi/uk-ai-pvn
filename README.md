@@ -47,3 +47,14 @@ src/main.jsx       React entry point
 src/index.css      Tailwind CSS entry
 public/            Static assets, including the concept note PDF
 ```
+
+
+## Deployment fix note
+
+This package pins `tailwindcss` to `3.4.17` so the existing PostCSS config can use `tailwindcss` directly as the PostCSS plugin. This avoids the Tailwind v4/Vercel error that asks for `@tailwindcss/postcss`.
+
+Use Vercel defaults:
+- Framework: Vite
+- Build command: `npm run build`
+- Output directory: `dist`
+
