@@ -1,8 +1,13 @@
 {
   "name": "uk-sovereign-ai-validation-site",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
+  "packageManager": "npm@10.8.2",
+  "engines": {
+    "node": "20.x",
+    "npm": "10.x"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -12,11 +17,11 @@
     "@vitejs/plugin-react": "4.3.4",
     "vite": "5.4.11",
     "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
     "tailwindcss": "3.4.17",
     "postcss": "8.4.49",
-    "autoprefixer": "10.4.20",
-    "@tailwindcss/postcss": "^4.1.8"
-  },
-  "devDependencies": {}
+    "autoprefixer": "10.4.20"
+  }
 }
