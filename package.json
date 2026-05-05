@@ -1,12 +1,10 @@
 {
   "name": "uk-sovereign-ai-validation-site",
   "private": true,
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
-  "packageManager": "npm@10.8.2",
   "engines": {
-    "node": "20.x",
-    "npm": "10.x"
+    "node": "20.x"
   },
   "scripts": {
     "dev": "vite",
