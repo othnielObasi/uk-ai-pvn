@@ -1,9 +1,9 @@
 {
   "name": "uk-sovereign-ai-validation-site",
   "private": true,
-  "version": "1.0.5",
+  "version": "1.0.6",
   "type": "module",
-  "packageManager": "pnpm@9.15.4",
+  "packageManager": "yarn@1.22.22",
   "engines": {
     "node": "20.x"
   },
