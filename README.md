@@ -4,9 +4,11 @@ A Vite + React + Tailwind landing site for a proposed UK-facing sovereign AI pro
 
 ## Local development
 
+This project now uses pnpm for deterministic deployment.
+
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 Open the local URL shown by Vite.
@@ -14,20 +16,20 @@ Open the local URL shown by Vite.
 ## Production build
 
 ```bash
-npm run build
-npm run preview
+pnpm run build
+pnpm run preview
 ```
 
 ## Deploy to Vercel
 
-1. Create a new GitHub repository.
-2. Push this project to GitHub.
-3. Go to Vercel and import the GitHub repository.
-4. Vercel should auto-detect Vite. If not, use:
-   - Framework: Vite
-   - Install command: `npm install`
-   - Build command: `npm run build`
-   - Output directory: `dist`
+Import the GitHub repository into Vercel and use these settings:
+
+- Framework: Vite
+- Install command: `pnpm install --no-frozen-lockfile`
+- Build command: `pnpm run build`
+- Output directory: `dist`
+
+If Vercel still runs `npm install`, check Project Settings > Build & Development Settings and override the install command manually.
 
 ## PDF concept note
 
@@ -48,13 +50,8 @@ src/index.css      Tailwind CSS entry
 public/            Static assets, including the concept note PDF
 ```
 
-
 ## Deployment fix note
 
-This package pins `tailwindcss` to `3.4.17` so the existing PostCSS config can use `tailwindcss` directly as the PostCSS plugin. This avoids the Tailwind v4/Vercel error that asks for `@tailwindcss/postcss`.
+The project uses Tailwind CSS v3.4.17 with the standard PostCSS plugin configuration. It intentionally does not use `@tailwindcss/postcss`, which is for Tailwind v4.
 
-Use Vercel defaults:
-- Framework: Vite
-- Build command: `npm run build`
-- Output directory: `dist`
-
+The package manager is pinned to `pnpm@9.15.4` in `package.json`. Vercel should install with pnpm when building the latest commit.
