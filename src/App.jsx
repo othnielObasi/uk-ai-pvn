@@ -141,6 +141,16 @@ const partnerCtas = [
   ["Become a founding partner", "For universities, infrastructure providers, assurance partners, and investors."],
 ];
 
+const partnerReciprocity = [
+  ["Public sector", "Real challenges, policy context, adoption pathways", "Pre-procurement evidence, safer experimentation, access to validated solutions"],
+  ["Companies & SMEs", "Operational AI problems", "Lower-risk AI discovery and validation"],
+  ["Universities", "Researchers, students, expertise", "Industry challenges, commercialisation paths, applied research"],
+  ["AI builders & startups", "Products and technical capability", "Independent validation, evidence packs, customer exposure"],
+  ["Infrastructure partners", "Compute, cloud, and deployment capability", "Qualified AI workloads and ecosystem positioning"],
+  ["Assurance partners", "Testing and governance expertise", "Participation in emerging assurance practice and validated engagements"],
+  ["Investors", "Capital and commercial expertise", "Better technical and assurance signals on emerging companies"],
+];
+
 const institutionalMarkers = [
   ["Purpose", "Trusted AI adoption infrastructure"],
   ["Method", "Evidence before procurement or deployment"],
@@ -173,6 +183,7 @@ const runSelfChecks = () => {
   assert(scorecard.reduce((sum, item) => sum + item.value, 0) === 100, "scorecard weights must total 100");
   assert(proofOutputs.length === 4, "proof outputs should be grouped into four evidence categories");
   assert(partnerCtas.length === 4, "partner CTA pathways should contain four routes");
+  assert(partnerReciprocity.length === 7, "partner reciprocity table should contain seven stakeholder rows");
   assert(institutionalMarkers.length === 4, "institutional marker strip should contain four credibility markers");
   assert(interestOptions.length === 8, "interest form should contain eight stakeholder options");
   assert(conceptNoteHref.endsWith(".pdf"), "concept note download should point to a PDF file");
@@ -215,10 +226,15 @@ function Hero() {
     <section id="top" className="relative overflow-hidden border-b border-slate-200 bg-white pt-32 pb-20 sm:pt-36 lg:pb-28">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-[1.08fr_0.92fr] lg:px-8">
         <div>
-          <div className="mb-6 inline-flex items-center gap-2 rounded-md border border-blue-100 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-950"><Icon name="shield" className="h-4 w-4" />Sovereign validation infrastructure for UK AI adoption</div>
+          <div className="mb-6 inline-flex items-center gap-2 rounded-md border border-blue-100 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-950"><Icon name="shield" className="h-4 w-4" />Independent validation infrastructure for UK AI adoption</div>
           <h1 className="text-4xl font-bold tracking-tight text-slate-950 sm:text-6xl lg:text-7xl">From AI prototypes to trusted, sovereign deployment.</h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">A proposed UK-facing validation network helping organisations assess AI products for capability, safety, governance, sovereignty, and deployment readiness before procurement or deployment.</p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row"><a href="#pilot"><Button className="w-full sm:w-auto">Explore the pilot <Icon name="arrowRight" className="h-4 w-4" /></Button></a><a href={conceptNoteHref} download><Button variant="secondary" className="w-full sm:w-auto">Download concept note</Button></a><a href="#contact"><Button variant="secondary" className="w-full sm:w-auto">Register interest</Button></a></div>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">A proposed UK-facing validation network bringing industry, government, academia and the AI ecosystem together to turn promising AI products into evidence-backed adoption decisions.</p>
+          <p className="mt-3 max-w-2xl text-sm font-semibold uppercase tracking-[0.14em] text-blue-950">Capability &middot; Safety &middot; Governance &middot; Sovereignty &middot; Deployment readiness</p>
+          <div className="mt-6 max-w-2xl rounded-md border border-blue-100 bg-blue-50 p-4">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-950">Founding phase</p>
+            <p className="mt-1.5 text-sm leading-6 text-slate-700">We are bringing together UK public-sector organisations, companies, universities, AI builders, infrastructure providers, assurance specialists and investors to co-design and launch the first validation pilot.</p>
+          </div>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row"><a href="#contact"><Button className="w-full sm:w-auto">Join the Founding Coalition <Icon name="arrowRight" className="h-4 w-4" /></Button></a><a href="#pilot"><Button variant="secondary" className="w-full sm:w-auto">Explore the pilot</Button></a><a href={conceptNoteHref} download><Button variant="secondary" className="w-full sm:w-auto">Download concept note</Button></a></div>
           <div className="mt-6 grid max-w-2xl grid-cols-1 gap-2 text-sm text-slate-600 sm:grid-cols-2">{["Evidence before procurement", "Sovereignty before scale", "Fairer builder participation", "Partner-led follow-up pathways"].map((item) => <div key={item} className="flex items-center gap-2"><Icon name="checkCircle" className="h-4 w-4 text-blue-950" /><span>{item}</span></div>)}</div>
         </div>
         <HeroVisual />
@@ -249,6 +265,14 @@ function Sovereignty() {
 
 function Ecosystem() {
   return <Section id="ecosystem" eyebrow="Who it serves" title="Designed for the full UK AI ecosystem." subtitle="The initiative connects demand, builders, talent, infrastructure, assurance, and capital into one validation pathway." className="bg-white"><div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm shadow-slate-900/5">{audiences.map(([title, body], index) => <div key={title} className="grid gap-4 border-b border-slate-200 p-5 last:border-b-0 md:grid-cols-[0.35fr_1fr_auto] md:items-center md:p-6"><div className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-950">0{index + 1}</div><div><h3 className="text-xl font-bold text-slate-950">{title}</h3><p className="mt-1 leading-7 text-slate-600">{body}</p></div><a href="#contact" className="inline-flex items-center gap-2 text-sm font-semibold text-blue-950 hover:text-blue-900">Start conversation <Icon name="arrowRight" className="h-4 w-4" /></a></div>)}</div></Section>;
+}
+
+function Reciprocity() {
+  return <Section id="reciprocity" eyebrow="Why participate" title="What each partner contributes, and what they gain." subtitle="Validation only works as a two-way exchange. Here is the reciprocity behind each role in the coalition." className="bg-slate-50"><div className="overflow-x-auto rounded-lg border border-slate-200 bg-white shadow-sm shadow-slate-900/5"><table className="w-full min-w-[640px] border-collapse text-left"><thead><tr className="border-b border-slate-200 bg-slate-50">
+    <th className="p-4 text-sm font-semibold uppercase tracking-[0.14em] text-slate-500">Partner</th>
+    <th className="p-4 text-sm font-semibold uppercase tracking-[0.14em] text-slate-500">What they contribute</th>
+    <th className="p-4 text-sm font-semibold uppercase tracking-[0.14em] text-slate-500">What they gain</th>
+  </tr></thead><tbody>{partnerReciprocity.map(([title, contribution, benefit]) => <tr key={title} className="border-b border-slate-200 last:border-b-0"><td className="p-4 align-top font-bold text-slate-950">{title}</td><td className="p-4 align-top leading-6 text-slate-600">{contribution}</td><td className="p-4 align-top leading-6 text-slate-600">{benefit}</td></tr>)}</tbody></table></div></Section>;
 }
 
 function NationalBenefits() {
@@ -282,5 +306,5 @@ function Footer() {
 }
 
 export default function UKSovereignAIValidationWebsite() {
-  return <main className="min-h-screen bg-white font-sans text-slate-900"><Header /><Hero /><InstitutionalStrip /><Problem /><WhyNow /><Model /><Sovereignty /><Ecosystem /><NationalBenefits /><Framework /><Pilot /><Coalition /><ConceptNoteCta /><Contact /><Footer /></main>;
+  return <main className="min-h-screen bg-white font-sans text-slate-900"><Header /><Hero /><InstitutionalStrip /><Problem /><WhyNow /><Model /><Sovereignty /><Ecosystem /><Reciprocity /><NationalBenefits /><Framework /><Pilot /><Coalition /><ConceptNoteCta /><Contact /><Footer /></main>;
 }
